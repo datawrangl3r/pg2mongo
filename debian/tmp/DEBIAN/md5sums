@@ -1,0 +1,12 @@
+4145202d2c529c156fe2f0a92ec88969  usr/lib/python3.4/dist-packages/pg2mongo-1.0-py3.4.egg-info/PKG-INFO
+7db1a32f747fce65d541f9563ec0c76f  usr/lib/python3.4/dist-packages/pg2mongo-1.0-py3.4.egg-info/SOURCES.txt
+68b329da9893e34099c7d8ad5cb9c940  usr/lib/python3.4/dist-packages/pg2mongo-1.0-py3.4.egg-info/dependency_links.txt
+78aab376c4eea9ca41e536063661ad61  usr/lib/python3.4/dist-packages/pg2mongo-1.0-py3.4.egg-info/requires.txt
+9ab474c05cb68b50a5232f465fb4963a  usr/lib/python3.4/dist-packages/pg2mongo-1.0-py3.4.egg-info/top_level.txt
+0f0d1b6ed1d964cd12db9efb3fd6ceb7  usr/lib/python3.4/dist-packages/pg2mongo/__init__.py
+5933a052505900024919b70bbfaa49b9  usr/lib/python3.4/dist-packages/pg2mongo/__pycache__/__init__.cpython-34.pyc
+b0b7b552c82e03a418cd23fa6b6cf1ba  usr/lib/python3.4/dist-packages/pg2mongo/__pycache__/config_reader.cpython-34.pyc
+96428b9e70ec768452bec341ceee1f63  usr/lib/python3.4/dist-packages/pg2mongo/config_reader.py
+455e386604b6bf16894886fdf49338bd  usr/lib/python3.4/dist-packages/pg2mongo/pg2mongo.yml
+456f820148722a095ec4e72985fbc77f  usr/lib/python3.4/dist-packages/pg2mongo/sample_migration.sql
+78caa7a305e059a6dfb2d306b6be5d13  usr/share/doc/pg2mongo/changelog.gz

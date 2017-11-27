@@ -1,0 +1,4 @@
+asteval==0.9.8
+psycopg2==2.7.3.1
+pymongo==3.5.1
+PyYAML==3.12

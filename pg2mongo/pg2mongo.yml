@@ -1,0 +1,42 @@
+EXTRACTION:
+    HOST : localhost 
+    USER : postgres
+    PASSWORD : juno
+    DATABASE : fandom
+COMMIT:
+    HOST : localhost
+    USER :
+    PASSWORD :
+    DATABASE : fandom
+MIGRATION:
+    INIT_TABLE: universes
+    INIT_KEYS:
+        - id as uv_id
+        - universe as trax_universe
+        - created_at as trax_created_at
+    SKELETON : 
+        - KEY1 = {}
+        - KEY2 = {}
+    TABLES_ORDER :
+        - heroes
+        - weapons
+    TABLES :
+        heroes :
+            condition : universe_id = uv_id
+                #Dictionary's key ==> Postgres Field of the corresponding schema.table1
+            mapping   :
+                - KEY1['hero_id'] = %s['hero_id']
+                - KEY1['universe_id'] = %s['universe_id']
+                - KEY1['name'] = %s['name']
+                - KEY1['created_at'] = %s['created_at']
+                - KEY1['weapons'] = []
+        weapons :
+            condition : hero_id = KEY1['hero_id']
+            mapping   :
+                - list:
+                    - KEY1['weapons'].append({})
+                    - KEY1['weapons'][-1]['weapon_name'] = %s['weapon_name']
+                    - KEY1['weapons'][-1]['weapon_category'] = %s['weapon_category']
+    COLLECTIONS :
+        heroes :
+            KEY1

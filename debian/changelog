@@ -1,0 +1,5 @@
+pg2mongo (1.0) UNRELEASED; urgency=medium
+
+  * Initial release. (Closes: #XXXXXX)
+
+ -- sathya <datawrangl3r@gmail.com>  Mon, 27 Nov 2017 23:30:16 +0530

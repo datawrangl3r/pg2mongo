@@ -1,0 +1,3 @@
+include README.md
+include pg2mongo/sample_migration.sql
+include pg2mongo/pg2mongo.yml

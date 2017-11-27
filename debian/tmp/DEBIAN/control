@@ -1,0 +1,9 @@
+Package: pg2mongo
+Version: 1.0
+Architecture: all
+Maintainer: Sathya, <datawrangl3r@gmail.com>
+Installed-Size: 64
+Depends: python
+Section: python
+Priority: optional
+Description: A postgres to mongo migrator
