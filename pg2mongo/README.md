@@ -1,3 +1,4 @@
+[![N|Solid](https://github.com/datawrangl3r/pg2mongo/blob/master/pg2mongo/pg2mongo.png)](https://github.com/datawrangl3r/pg2mongo)
 # pg2mongo
 -----------
 > version 1.0
@@ -73,3 +74,7 @@ The preliminary sections such as **extraction** and **commit** are self expanato
 | TABLES_ORDER | The order by which the TABLES section needs to be executed for each of the entry from INIT_TABLE |
 | TABLES | Set of PostgreSQL tables enlisted along with condition and corresponding mapping. In the case of lists inside a dictionary, list can be mentioned. Mapping is where, the association of skeleton to the table keys is defined. The value assignments are python compatible; hence, they are defined by using '%s' and other python based variable transformation functions can be used over here.|
 | COLLECTIONS | This is where the push of the skeleton to the corresponding MongoDB collection takes place. |
+
+Happy Wrangling!!! :)
+
+[![N|Solid](http://3.bp.blogspot.com/-UT3SH3wDuYE/WULNcoEkC4I/AAAAAAAAHcc/KaGogqAIvuwPu9UP06jiEl2U39Wj7VX2ACK4BGAYYCw/w800/Logomakr_7nINLC.png)](http://www.datawrangler.in/)
