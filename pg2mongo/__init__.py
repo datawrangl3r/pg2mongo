@@ -1,11 +1,9 @@
 import re
 import ast
-from asteval import Interpreter
+import logging
 import psycopg2 as pg2
 from pymongo import MongoClient
 from config_reader import config_reader
-
-aeval = Interpreter()
 
 class Migrator():
 	def __init__(self):
@@ -27,7 +25,7 @@ class Migrator():
 			database = self.output['COMMIT']
 			try:
 				if database['USER'] != '' and database['USER'] != None:
-					uri = "mongodb://%s:%s@%s:27017" % (database['USER'], database['PASSWORD'], database['HOST'])
+					uri = "mongodb://{USER}:{PASSWORD}@{HOST}:27017".format(USER=database['USER'], PASSWORD=database['PASSWORD'], HOST=database['HOST'])
 				else:
 					uri = "mongodb://localhost:27017"
 			except:
@@ -86,50 +84,62 @@ class Migrator():
 				return 'JSON Format Incorrect'		
 
 	def validate_conf(self):
+		validation_checks = [] #len should be equal to 8
 		try:
 			cur = self.ext_connection()
+			validation_checks.append(1)
 		except Exception as e:
-			return 'Something is wrong with the connection. Check your connection/config file'
+			logging.error('Something is wrong with the connection. Check your connection/config file')
 
 		try:
 			self.table_order = self.output['MIGRATION']['TABLES_ORDER']
+			validation_checks.append(1)
 		except Exception as e:
-			return 'TABLES_ORDER key is not found. Check the config file'
+			logging.error('TABLES_ORDER key is not found. Check the config file')
 
 		try:
 			self.init_table = self.output['MIGRATION']['INIT_TABLE']
+			validation_checks.append(1)
 		except Exception:
-			return 'INIT_TABLE key is not found. Check the config file'
+			logging.error('INIT_TABLE key is not found. Check the config file')
 
 		try:
 			self.init_keys = self.output['MIGRATION']['INIT_KEYS']
+			validation_checks.append(1)
 		except Exception:
-			return 'INIT_KEYS key is not found. Check the config file'
+			logging.error('INIT_KEYS key is not found. Check the config file')
 
 		try:
 			self.init_keys = self.output['MIGRATION']['INIT_KEYS']
+			validation_checks.append(1)
 		except Exception:
-			return 'INIT_KEYS key is not found. Check the config file'
+			logging.error('INIT_KEYS key is not found. Check the config file')
 
 		try:
 			self.skeleton_reload()
+			validation_checks.append(1)
 		except Exception as e:
-			return 'SKELETON key is not found. Check the config file'
+			logging.error('SKELETON key is not found. Check the config file')
 
 		try:
 			self.tables = self.output['MIGRATION']['TABLES']
+			validation_checks.append(1)
 		except Exception:
-			return 'TABLES key is not found. Check the config file'
+			logging.error('TABLES key is not found. Check the config file')
 
 		try:
 			self.collections = self.output['MIGRATION']['COLLECTIONS']
+			validation_checks.append(1)
 		except Exception:
-			return 'COLLECTIONS key is not found. Check the config file'
+			logging.error('COLLECTIONS key is not found. Check the config file')
+
+		if len(validation_checks) == 8:
+			return None
 
 	def init_migration(self):
 		ext_curs = self.ext_connection()
 		com_curs = self.com_connection()
-		source_ext_query = "SELECT array_to_json(array_agg(t)) FROM (select %s from %s)t"%(', '.join(self.init_keys), self.init_table)
+		source_ext_query = "SELECT array_to_json(array_agg(t)) FROM (SELECT {KEYS} FROM {TABLE})t".format(KEYS=', '.join(self.init_keys), TABLE=self.init_table)
 		ext_curs.execute(source_ext_query)
 		result_set = ext_curs.fetchall()
 		for each_set in result_set[0][0]:
@@ -155,5 +165,6 @@ class Migrator():
 
 if __name__ == "__main__":
 	mig_obj = Migrator()
-	if mig_obj.validate_conf() == None:
-		mig_obj.init_migration()
+	print(mig_obj.validate_conf())
+	# if mig_obj.validate_conf() == None:
+	# 	mig_obj.init_migration()
