@@ -1,4 +1,4 @@
-[![N|Solid](https://github.com/datawrangl3r/pg2mongo/blob/master/pg2mongo/pg2mongo.png)](https://github.com/datawrangl3r/pg2mongo)
+[![N|Solid](https://github.com/datawrangl3r/pg2mongo/blob/master/pg2mongo.png)](https://github.com/datawrangl3r/pg2mongo)
 # pg2mongo
 -----------
 > version 1.0
